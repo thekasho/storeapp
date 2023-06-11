@@ -17,17 +17,20 @@ class LocalController extends GetxController {
   @override
   void onInit() {
     String? sharedPrefLang = myServices.sharedPreferences.getString("lang");
+    print(sharedPrefLang);
+
     if(sharedPrefLang == "ar"){
       language = const Locale("ar");
-      print("Changing Language to: $language");
+      print("Changing Language from AR to: $language");
     } else if(sharedPrefLang == "en"){
       language = const Locale("en");
-      print("Changing Language to: $language");
+      print("Changing Language from EN to: $language");
     }
     else {
       language = Locale(Get.deviceLocale!.languageCode);
       print("Changing Language to: $language");
     }
+
     super.onInit();
   }
 
