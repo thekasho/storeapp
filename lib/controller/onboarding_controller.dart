@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
+import 'package:storefull/core/constant/routesnames.dart';
+import 'package:storefull/data/datasource/static/static.dart';
+
 abstract class OnBoardingController extends GetxController {
   next();
   onPageChanged(int index);
@@ -13,11 +16,16 @@ class OnBoardingControllerImp extends OnBoardingController {
   @override
   next() {
     currentPage++;
-    pageController.animateToPage(
-      currentPage,
-      duration: const Duration(milliseconds: 900),
-      curve: Curves.easeInOut,
-    );
+
+    if (currentPage >= onBoardingList.length) {
+      Get.offAllNamed(AppRoute.login);
+    } else {
+      pageController.animateToPage(
+        currentPage,
+        duration: const Duration(milliseconds: 900),
+        curve: Curves.easeInOut,
+      );
+    }
   }
 
   @override

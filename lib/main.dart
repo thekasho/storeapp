@@ -3,6 +3,8 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:storefull/core/constant/colors.dart';
 import 'package:storefull/veiw/screen/onboarding.dart';
 
+import 'routes.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -23,6 +25,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.blue,
       ),
       home: const OnBoarding(),
+      routes: routes,
     );
   }
 }
