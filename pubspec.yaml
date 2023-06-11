@@ -1,0 +1,63 @@
+name: storefull
+description: Simple Flutter Store APP
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.3 <4.0.0'
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  get: ^4.6.5
+  jiffy: ^6.2.1
+  intl: ^0.18.0
+  http: ^0.13.0
+  cached_network_image: ^3.2.3
+  image_picker: ^0.8.8
+  flutter_cache_manager: ^3.3.0
+  show_up_animation: ^2.0.0
+  auto_animated: ^3.1.0
+  flutter_polyline_points: ^1.0.0
+  google_maps_flutter: ^2.3.0
+  geolocator: ^9.0.2
+  geocoding: ^2.1.0
+  firebase_messaging: ^14.6.2
+  firebase_core: ^2.13.1
+  flutter_local_notifications: ^14.1.1
+  cloud_firestore: ^4.8.0
+  sqflite: ^2.2.8+4
+  shared_preferences: ^2.1.2
+  path: ^1.8.3
+  qr_flutter: ^4.1.0
+  scan: ^1.6.0
+  grouped_list: ^5.1.2
+  url_launcher: ^6.1.11
+  dropdown_search: ^5.0.6
+  badges: ^3.1.1
+  flutter_svg: ^2.0.6
+  font_awesome_flutter: ^10.4.0
+  fluttericon: ^2.0.0
+  dartz: ^0.10.1
+  google_sign_in: ^6.1.4
+  flutter_localization: ^0.1.12
+  device_preview: ^1.1.0
+  responsive_builder: ^0.7.0
+  image_pickers: ^2.0.4+1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+flutter:
+  uses-material-design: true
+
+  assets:
+   - assets/images/
+
+  fonts:
+    - family: Cairo
+      fonts:
+        - asset: assets/fonts/Cairo/Cairo-Regular.ttf
+        - asset: assets/fonts/Cairo/Cairo-Bold.ttf
+          weight: 700
