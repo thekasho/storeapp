@@ -5,6 +5,7 @@ import 'package:storefull/core/constant/colors.dart';
 import '../../widget/auth/customtextbodyauth.dart';
 import '../../widget/auth/customtextformauth.dart';
 import '../../widget/auth/customtexttitleauth.dart';
+import '../../widget/auth/logoauth.dart';
 
 class Login extends StatelessWidget {
   const Login({Key? key}) : super(key: key);
@@ -26,10 +27,10 @@ class Login extends StatelessWidget {
         child: ListView(
           padding: const EdgeInsets.all(15.0),
           children: [
-            const SizedBox(height: 20.0),
+            LogoAuth(),
             CustomTextTitleAuth(text: "2".tr),
             const CustomTextBodyAuth(text: "Sign In With Your Email And Password OR Continue With Social Media",),
-            const SizedBox(height: 50),
+            const SizedBox(height: 30),
             CustomTextFormAuth(
               hinttext: "5".tr,
               labeltext: "3".tr,
@@ -40,6 +41,8 @@ class Login extends StatelessWidget {
               labeltext: "4".tr,
               iconData: Icons.lock_outline,
             ),
+            const Text("Change Password", textAlign: TextAlign.end,),
+
           ],
         ),
       ),
