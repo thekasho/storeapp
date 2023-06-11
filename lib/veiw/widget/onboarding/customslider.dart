@@ -5,8 +5,8 @@ import '../../../controller/onboarding_controller.dart';
 import '../../../core/constant/imageasset.dart';
 import '../../../data/datasource/static/static.dart';
 
-class CustomSliderOnBoardin extends GetView<OnBoardingControllerImp> {
-  const CustomSliderOnBoardin({Key? key}) : super(key: key);
+class CustomSliderOnBoarding extends GetView<OnBoardingControllerImp> {
+  const CustomSliderOnBoarding({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
