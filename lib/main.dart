@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:storefull/core/constant/colors.dart';
 import 'package:storefull/core/services/services.dart';
-import 'package:storefull/veiw/screen/onboarding.dart';
+import 'package:storefull/veiw/screen/language.dart';
 
 import 'core/localization/translation.dart';
 import 'routes.dart';
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         ),
         primaryColor: Colors.blue,
       ),
-      home: const OnBoarding(),
+      home: const Language(),
       routes: routes,
     );
   }
