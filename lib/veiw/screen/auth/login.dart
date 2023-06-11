@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:storefull/core/constant/colors.dart';
+import '../../widget/auth/customtextbodyauth.dart';
+import '../../widget/auth/customtextformauth.dart';
+import '../../widget/auth/customtexttitleauth.dart';
 
 class Login extends StatelessWidget {
   const Login({Key? key}) : super(key: key);
@@ -23,33 +27,18 @@ class Login extends StatelessWidget {
           padding: const EdgeInsets.all(15.0),
           children: [
             const SizedBox(height: 20.0),
-            Text(
-              "2".tr,
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.displayLarge,
+            CustomTextTitleAuth(text: "2".tr),
+            const CustomTextBodyAuth(text: "Sign In With Your Email And Password OR Continue With Social Media",),
+            const SizedBox(height: 50),
+            CustomTextFormAuth(
+              hinttext: "5".tr,
+              labeltext: "3".tr,
+              iconData: Icons.email_outlined,
             ),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 25),
-              child: Text(
-                "Sign In With Your Email And Password OR Continue With Social Media",
-                textAlign: TextAlign.center,
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyLarge!
-                    .copyWith(color: AppColor.grey),
-              ),
-            ),
-            const SizedBox(height: 25),
-            TextFormField(
-              decoration: InputDecoration(
-                floatingLabelBehavior: FloatingLabelBehavior.always,
-                contentPadding:
-                    const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
-                label: const Text("Email"),
-                suffixIcon: const Icon(Icons.email_outlined),
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
-              ),
+            CustomTextFormAuth(
+              hinttext: "6".tr,
+              labeltext: "4".tr,
+              iconData: Icons.lock_outline,
             ),
           ],
         ),
@@ -57,3 +46,5 @@ class Login extends StatelessWidget {
     );
   }
 }
+
+
