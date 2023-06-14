@@ -18,7 +18,7 @@ class CheckEmailControllerImp extends CheckEmailController {
 
   @override
   goToSuccessSignUp() {
-    Get.offNamed(AppRoute.successSignUp);
+    Get.offNamed(AppRoute.signUpVerifyCode);
   }
 
   @override

@@ -6,6 +6,7 @@ import 'package:storefull/veiw/screen/auth/login.dart';
 import 'package:storefull/veiw/screen/auth/forgetpassword/resetpassword.dart';
 import 'package:storefull/veiw/screen/auth/signup.dart';
 import 'package:storefull/veiw/screen/auth/forgetpassword/success_resetpassword.dart';
+import 'package:storefull/veiw/screen/auth/signupcodeverify.dart';
 import 'package:storefull/veiw/screen/auth/success_signup.dart';
 import 'package:storefull/veiw/screen/auth/forgetpassword/verifycode.dart';
 import 'package:storefull/veiw/screen/onboarding.dart';
@@ -20,6 +21,7 @@ Map<String, Widget Function(BuildContext)> routes = {
   AppRoute.successResetPassword: (context) => const SuccessResetPassword(),
   AppRoute.successSignUp: (context) => const SuccessSignUp(),
   AppRoute.checkEmail: (context) => const CheckEmail(),
+  AppRoute.signUpVerifyCode: (context) => const SignUpVerifyCode(),
 
   // OnBoarding
   AppRoute.onboarding: (context) => const OnBoarding(),

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:storefull/core/constant/colors.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
+import 'package:storefull/core/constant/colors.dart';
+import '../../../controller/auth/successsignup_controller.dart';
 import '../../widget/auth/custombuttonauth.dart';
 
 class SuccessSignUp extends StatelessWidget {
@@ -8,6 +11,9 @@ class SuccessSignUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    SuccessSignUpControllerImp controller = Get.put(SuccessSignUpControllerImp());
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColor.backgroundcolor,
@@ -37,7 +43,9 @@ class SuccessSignUp extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             Spacer(),
-            Container(width: double.infinity, child: CustomButtonAuth(text: "Continue to Login", onPressed: () {})),
+            Container(width: double.infinity, child: CustomButtonAuth(text: "Continue to Login", onPressed: () {
+              controller.goToLoginPage();
+            })),
             const SizedBox(height: 70),
           ],
         ),
