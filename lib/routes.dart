@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:storefull/core/constant/routesnames.dart';
-import 'package:storefull/veiw/screen/auth/checkemail.dart';
 import 'package:storefull/veiw/screen/auth/forgetpassword/forgetpassword.dart';
 import 'package:storefull/veiw/screen/auth/login.dart';
 import 'package:storefull/veiw/screen/auth/forgetpassword/resetpassword.dart';
@@ -20,7 +19,6 @@ Map<String, Widget Function(BuildContext)> routes = {
   AppRoute.resetPassword: (context) => const ResetPassword(),
   AppRoute.successResetPassword: (context) => const SuccessResetPassword(),
   AppRoute.successSignUp: (context) => const SuccessSignUp(),
-  AppRoute.checkEmail: (context) => const CheckEmail(),
   AppRoute.signUpVerifyCode: (context) => const SignUpVerifyCode(),
 
   // OnBoarding

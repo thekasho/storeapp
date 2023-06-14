@@ -54,6 +54,7 @@ class Login extends StatelessWidget {
                 labeltext: "4".tr,
                 iconData: Icons.lock_outline,
                 mycontroller: controller.password,
+                isPassword: true,
                 valid: (val) {
                   return validInput(val!, 5, 30, "password");
                 },

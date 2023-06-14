@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import 'package:storefull/core/services/services.dart';
 import 'package:storefull/veiw/screen/language.dart';
+import 'binding.dart';
 import 'core/localization/changelocal.dart';
 import 'core/localization/translation.dart';
 import 'routes.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
       theme: controller.appTheme,
       // home: const Language(),
       home: Language(),
+      initialBinding: MyBinding(),
       routes: routes,
     );
   }

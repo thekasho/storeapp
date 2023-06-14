@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 import 'package:storefull/core/constant/colors.dart';
 import '../../../controller/auth/successsignup_controller.dart';

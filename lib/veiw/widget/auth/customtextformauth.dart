@@ -6,6 +6,8 @@ class CustomTextFormAuth extends StatelessWidget {
   final IconData iconData;
   final TextEditingController mycontroller;
   final String? Function(String?) valid;
+  final bool isNumber;
+  final bool isPassword;
 
   const CustomTextFormAuth({
     super.key,
@@ -14,6 +16,8 @@ class CustomTextFormAuth extends StatelessWidget {
     required this.iconData,
     required this.mycontroller,
     required this.valid,
+    this.isNumber = false,
+    this.isPassword = false,
   });
 
   @override
@@ -21,6 +25,8 @@ class CustomTextFormAuth extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 30),
       child: TextFormField(
+        obscureText: isPassword,
+        keyboardType: isNumber == true ? const TextInputType.numberWithOptions(decimal: true) : TextInputType.text,
         validator: valid,
         controller: mycontroller,
         decoration: InputDecoration(

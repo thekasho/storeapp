@@ -39,6 +39,7 @@ class ResetPassword extends StatelessWidget {
               labeltext: "26".tr,
               iconData: Icons.lock_outline,
               mycontroller: controller.password,
+              isPassword: true,
               valid: (val) {
                 return validInput(val!, 5, 100, "password");
               },
@@ -48,6 +49,7 @@ class ResetPassword extends StatelessWidget {
               labeltext: "27".tr,
               iconData: Icons.lock_outline,
               mycontroller: controller.repassword,
+              isPassword: true,
               valid: (val) {
                 return validInput(val!, 5, 100, "password");
               },
