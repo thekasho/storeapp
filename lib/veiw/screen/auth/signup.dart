@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:storefull/core/constant/colors.dart';
-import '../../../controller/auth/signupcontroller.dart';
+import '../../../controller/auth/signup_controller.dart';
 import '../../widget/auth/custombuttonauth.dart';
 import '../../widget/auth/customtextbodyauth.dart';
 import '../../widget/auth/customtextformauth.dart';
@@ -59,7 +59,7 @@ class SignUp extends StatelessWidget {
               iconData: Icons.lock_outline,
               mycontroller: controller.password,
             ),
-            CustomButtonAuth(text: "11".tr, onPressed: () {}),
+            CustomButtonAuth(text: "11".tr, onPressed: () => controller.signup() ),
             const SizedBox(height: 30),
             CustomTextSign(
               textone: "13".tr,

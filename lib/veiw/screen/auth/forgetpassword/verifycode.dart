@@ -3,9 +3,9 @@ import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
 
 import 'package:storefull/core/constant/colors.dart';
-import '../../../controller/auth/verifycodecontroller.dart';
-import '../../widget/auth/customtextbodyauth.dart';
-import '../../widget/auth/customtexttitleauth.dart';
+import '../../../../controller/auth/verifycode_controller.dart';
+import '../../../widget/auth/customtextbodyauth.dart';
+import '../../../widget/auth/customtexttitleauth.dart';
 
 class VerifyCode extends StatelessWidget {
   const VerifyCode({Key? key}) : super(key: key);

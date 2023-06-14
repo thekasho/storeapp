@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:storefull/core/constant/colors.dart';
 
-import '../../widget/auth/custombuttonauth.dart';
+import '../../../../core/constant/colors.dart';
+import '../../../widget/auth/custombuttonauth.dart';
 
-class SuccessSignUp extends StatelessWidget {
-  const SuccessSignUp({Key? key}) : super(key: key);
+class SuccessResetPassword extends StatelessWidget {
+  const SuccessResetPassword({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class SuccessSignUp extends StatelessWidget {
         backgroundColor: AppColor.backgroundcolor,
         elevation: 0.0,
         centerTitle: true,
-        title: Text("Success Sign Up",
+        title: Text("Success Reset Password",
             style: Theme.of(context)
                 .textTheme
                 .displayLarge!
@@ -32,7 +32,7 @@ class SuccessSignUp extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             const Text(
-              "Sign Up Completed Successfully, You can continue to Login Page",
+              "Reset Password Completed Successfully, You can continue to Login Page",
               style: TextStyle(fontSize: 20.0),
               textAlign: TextAlign.center,
             ),
