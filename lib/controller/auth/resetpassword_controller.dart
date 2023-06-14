@@ -4,22 +4,25 @@ import 'package:storefull/core/constant/routesnames.dart';
 
 abstract class ResetPasswordController extends GetxController {
   resetpassword();
-  goToSuccessResetPassword();
 }
 
 class ResetPasswordControllerImp extends ResetPasswordController {
+
+  GlobalKey<FormState> formstate = GlobalKey<FormState>();
 
   late TextEditingController password;
   late TextEditingController repassword;
 
   @override
   resetpassword() {
-
-  }
-
-  @override
-  goToSuccessResetPassword() {
-    Get.offNamed(AppRoute.successResetPassword);
+    var formdata = formstate.currentState;
+    Get.toNamed(AppRoute.successResetPassword);
+    if(formdata!.validate()){
+      print("valid");
+    }
+    else {
+      print("invalid input");
+    }
   }
 
   @override

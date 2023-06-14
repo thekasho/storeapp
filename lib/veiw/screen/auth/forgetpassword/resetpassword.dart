@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import 'package:storefull/core/constant/colors.dart';
 import '../../../../controller/auth/resetpassword_controller.dart';
+import '../../../../core/functions/validinput.dart';
 import '../../../widget/auth/custombuttonauth.dart';
 import '../../../widget/auth/customtextbodyauth.dart';
 import '../../../widget/auth/customtextformauth.dart';
@@ -25,28 +26,37 @@ class ResetPassword extends StatelessWidget {
                 .displayLarge!
                 .copyWith(color: AppColor.grey)),
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(15.0),
-        children: [
-          CustomTextTitleAuth(text: "23".tr),
-          CustomTextBodyAuth(text: "24".tr,),
-          const SizedBox(height: 30),
-          CustomTextFormAuth(
-            hinttext: "25".tr,
-            labeltext: "26".tr,
-            iconData: Icons.lock_outline,
-            mycontroller: controller.password,
-          ),
-          CustomTextFormAuth(
-            hinttext: "27".tr,
-            labeltext: "27".tr,
-            iconData: Icons.lock_outline,
-            mycontroller: controller.repassword,
-          ),
-          CustomButtonAuth(text: "Update Password", onPressed: () {
-            controller.goToSuccessResetPassword();
-          }),
-        ],
+      body: Form(
+        key: controller.formstate,
+        child: ListView(
+          padding: const EdgeInsets.all(15.0),
+          children: [
+            CustomTextTitleAuth(text: "23".tr),
+            CustomTextBodyAuth(text: "24".tr,),
+            const SizedBox(height: 30),
+            CustomTextFormAuth(
+              hinttext: "25".tr,
+              labeltext: "26".tr,
+              iconData: Icons.lock_outline,
+              mycontroller: controller.password,
+              valid: (val) {
+                return validInput(val!, 5, 100, "password");
+              },
+            ),
+            CustomTextFormAuth(
+              hinttext: "27".tr,
+              labeltext: "27".tr,
+              iconData: Icons.lock_outline,
+              mycontroller: controller.repassword,
+              valid: (val) {
+                return validInput(val!, 5, 100, "password");
+              },
+            ),
+            CustomButtonAuth(text: "Update Password", onPressed: () {
+              controller.resetpassword();
+            }),
+          ],
+        ),
       ),
     );
   }

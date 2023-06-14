@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import 'package:storefull/core/constant/colors.dart';
 import '../../../../controller/auth/forgetpassword_controller.dart';
+import '../../../../core/functions/validinput.dart';
 import '../../../widget/auth/custombuttonauth.dart';
 import '../../../widget/auth/customtextbodyauth.dart';
 import '../../../widget/auth/customtextformauth.dart';
@@ -25,7 +26,8 @@ class ForgetPassword extends StatelessWidget {
                 .displayLarge!
                 .copyWith(color: AppColor.grey)),
       ),
-      body: Container(
+      body: Form(
+        key: controller.formstate,
         child: ListView(
           padding: const EdgeInsets.all(15.0),
           children: [
@@ -39,9 +41,12 @@ class ForgetPassword extends StatelessWidget {
               labeltext: "3".tr,
               iconData: Icons.email_outlined,
               mycontroller: controller.email,
+              valid: (val) {
+                return validInput(val!, 5, 30, "email");
+              },
             ),
             CustomButtonAuth(text: "19".tr, onPressed: () {
-              controller.goToVerifyCode();
+              controller.checkemail();
             }),
           ],
         ),

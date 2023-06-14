@@ -5,6 +5,7 @@ class CustomTextFormAuth extends StatelessWidget {
   final String labeltext;
   final IconData iconData;
   final TextEditingController mycontroller;
+  final String? Function(String?) valid;
 
   const CustomTextFormAuth({
     super.key,
@@ -12,6 +13,7 @@ class CustomTextFormAuth extends StatelessWidget {
     required this.labeltext,
     required this.iconData,
     required this.mycontroller,
+    required this.valid,
   });
 
   @override
@@ -19,6 +21,7 @@ class CustomTextFormAuth extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 30),
       child: TextFormField(
+        validator: valid,
         controller: mycontroller,
         decoration: InputDecoration(
           hintText: hinttext,

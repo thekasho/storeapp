@@ -4,21 +4,24 @@ import 'package:storefull/core/constant/routesnames.dart';
 
 abstract class CheckEmailController extends GetxController {
   checkemail();
-  goToSuccessSignUp();
 }
 
 class CheckEmailControllerImp extends CheckEmailController {
+
+  GlobalKey<FormState> formstate = GlobalKey<FormState>();
 
   late TextEditingController email;
 
   @override
   checkemail() {
-
-  }
-
-  @override
-  goToSuccessSignUp() {
-    Get.offNamed(AppRoute.signUpVerifyCode);
+    var formdata = formstate.currentState;
+    if(formdata!.validate()){
+      Get.offNamed(AppRoute.signUpVerifyCode);
+      print("valid");
+    }
+    else {
+      print("invalid input");
+    }
   }
 
   @override
