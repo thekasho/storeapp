@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import 'package:storefull/core/constant/colors.dart';
 import '../../../controller/auth/signup_controller.dart';
+import '../../../core/functions/alertexitaopp.dart';
 import '../../../core/functions/validinput.dart';
 import '../../widget/auth/custombuttonauth.dart';
 import '../../widget/auth/customtextbodyauth.dart';
@@ -24,61 +25,64 @@ class SignUp extends StatelessWidget {
         title: Text("11".tr,
             style: Theme.of(context).textTheme.displayLarge!.copyWith(color: AppColor.grey)),
       ),
-      body: GetBuilder<SignUpControllerImp>(
-        builder: (controller) => Form(
-          key: controller.formstate,
-          child: ListView(
-            padding: const EdgeInsets.all(15.0),
-            children: [
-              CustomTextTitleAuth(text: "2".tr),
-              CustomTextBodyAuth(text: "12".tr),
-              const SizedBox(height: 30),
-              CustomTextFormAuth(
-                hinttext: "14".tr,
-                labeltext: "15".tr,
-                iconData: Icons.person_outline,
-                mycontroller: controller.username,
-                valid: (val) {
-                  return validInput(val!, 5, 100, "username");
-                },
-              ),
-              CustomTextFormAuth(
-                isNumber: true,
-                hinttext: "16".tr,
-                labeltext: "17".tr,
-                iconData: Icons.phone,
-                mycontroller: controller.phone,
-                valid: (val) {
-                  return validInput(val!, 5, 100, "phone");
-                },
-              ),
-              CustomTextFormAuth(
-                hinttext: "5".tr,
-                labeltext: "3".tr,
-                iconData: Icons.email_outlined,
-                mycontroller: controller.email,
-                valid: (val) {
-                  return validInput(val!, 5, 100, "email");
-                },
-              ),
-              CustomTextFormAuth(
-                hinttext: "6".tr,
-                labeltext: "4".tr,
-                iconData: Icons.lock_outline,
-                mycontroller: controller.password,
-                isPassword: true,
-                valid: (val) {
-                  return validInput(val!, 5, 100, "password");
-                },
-              ),
-              CustomButtonAuth(text: "11".tr, onPressed: () => controller.signup()),
-              const SizedBox(height: 30),
-              CustomTextSign(
-                textone: "13".tr,
-                texttwo: "7".tr,
-                onTap: () => controller.signup(),
-              ),
-            ],
+      body: WillPopScope(
+        onWillPop: alertExitApp,
+        child: GetBuilder<SignUpControllerImp>(
+          builder: (controller) => Form(
+            key: controller.formstate,
+            child: ListView(
+              padding: const EdgeInsets.all(15.0),
+              children: [
+                CustomTextTitleAuth(text: "2".tr),
+                CustomTextBodyAuth(text: "12".tr),
+                const SizedBox(height: 30),
+                CustomTextFormAuth(
+                  hinttext: "14".tr,
+                  labeltext: "15".tr,
+                  iconData: Icons.person_outline,
+                  mycontroller: controller.username,
+                  valid: (val) {
+                    return validInput(val!, 5, 100, "username");
+                  },
+                ),
+                CustomTextFormAuth(
+                  isNumber: true,
+                  hinttext: "16".tr,
+                  labeltext: "17".tr,
+                  iconData: Icons.phone,
+                  mycontroller: controller.phone,
+                  valid: (val) {
+                    return validInput(val!, 5, 100, "phone");
+                  },
+                ),
+                CustomTextFormAuth(
+                  hinttext: "5".tr,
+                  labeltext: "3".tr,
+                  iconData: Icons.email_outlined,
+                  mycontroller: controller.email,
+                  valid: (val) {
+                    return validInput(val!, 5, 100, "email");
+                  },
+                ),
+                CustomTextFormAuth(
+                  hinttext: "6".tr,
+                  labeltext: "4".tr,
+                  iconData: Icons.lock_outline,
+                  mycontroller: controller.password,
+                  isPassword: true,
+                  valid: (val) {
+                    return validInput(val!, 5, 100, "password");
+                  },
+                ),
+                CustomButtonAuth(text: "11".tr, onPressed: () => controller.signup()),
+                const SizedBox(height: 30),
+                CustomTextSign(
+                  textone: "13".tr,
+                  texttwo: "7".tr,
+                  onTap: () => controller.goToLogin(),
+                ),
+              ],
+            ),
           ),
         ),
       ),

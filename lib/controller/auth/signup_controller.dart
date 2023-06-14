@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:storefull/core/constant/routesnames.dart';
 
 abstract class SignUpController extends GetxController {
+  goToLogin();
   signup();
 }
 
@@ -14,6 +15,11 @@ class SignUpControllerImp extends SignUpController {
   late TextEditingController phone;
   late TextEditingController email;
   late TextEditingController password;
+
+  @override
+  goToLogin() {
+    Get.offNamed(AppRoute.login);
+  }
 
   @override
   signup() {

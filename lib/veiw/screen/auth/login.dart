@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import 'package:storefull/core/constant/colors.dart';
 import '../../../controller/auth/login_controller.dart';
+import '../../../core/functions/alertexitaopp.dart';
 import '../../../core/functions/validinput.dart';
 import '../../widget/auth/custombuttonauth.dart';
 import '../../widget/auth/customtextbodyauth.dart';
@@ -22,23 +23,18 @@ class Login extends StatelessWidget {
         backgroundColor: AppColor.backgroundcolor,
         elevation: 0.0,
         centerTitle: true,
-        title: Text("7".tr,
-            style: Theme.of(context)
-                .textTheme
-                .displayLarge!
-                .copyWith(color: AppColor.grey)),
+        title: Text("7".tr, style: Theme.of(context).textTheme.displayLarge!.copyWith(color: AppColor.grey)),
       ),
-      body: Container(
+      body: WillPopScope(
+        onWillPop: alertExitApp,
         child: Form(
           key: controller.formstate,
           child: ListView(
             padding: const EdgeInsets.all(15.0),
             children: [
-              LogoAuth(),
+              const LogoAuth(),
               CustomTextTitleAuth(text: "2".tr),
-              CustomTextBodyAuth(
-                text: "8".tr,
-              ),
+              CustomTextBodyAuth(text: "8".tr),
               const SizedBox(height: 30),
               CustomTextFormAuth(
                 hinttext: "5".tr,
@@ -61,21 +57,14 @@ class Login extends StatelessWidget {
               ),
               InkWell(
                 onTap: () => controller.goToForgetPassword(),
-                child: Text(
-                  "9".tr,
-                  textAlign: TextAlign.end,
-                ),
+                child: Text("9".tr, textAlign: TextAlign.end),
               ),
-              CustomButtonAuth(text: "7".tr, onPressed: () {
-                controller.login();
-              }),
+              CustomButtonAuth(text: "7".tr, onPressed: () => controller.login() ),
               const SizedBox(height: 30),
               CustomTextSign(
                 textone: "10".tr,
                 texttwo: " ${"11".tr}",
-                onTap: (){
-                  controller.goToSignUp();
-                },
+                onTap: () => controller.goToSignUp(),
               ),
             ],
           ),
