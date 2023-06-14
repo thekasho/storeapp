@@ -38,7 +38,8 @@ class MyApp extends StatelessWidget {
         ),
         primaryColor: Colors.blue,
       ),
-      home: const Language(),
+      // home: const Language(),
+      home: Language(),
       routes: routes,
     );
   }

@@ -5,6 +5,7 @@ import 'package:storefull/core/constant/routesnames.dart';
 abstract class LoginController extends GetxController {
   login();
   goToSignUp();
+  goToForgetPassword();
 }
 
 class LoginControllerImp extends LoginController {
@@ -20,6 +21,11 @@ class LoginControllerImp extends LoginController {
   @override
   goToSignUp() {
     Get.toNamed(AppRoute.signup);
+  }
+
+  @override
+  goToForgetPassword() {
+    Get.toNamed(AppRoute.forgetPassword);
   }
 
   @override
