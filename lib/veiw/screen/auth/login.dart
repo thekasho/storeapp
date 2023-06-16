@@ -23,7 +23,11 @@ class Login extends StatelessWidget {
         backgroundColor: AppColor.backgroundcolor,
         elevation: 0.0,
         centerTitle: true,
-        title: Text("7".tr, style: Theme.of(context).textTheme.displayLarge!.copyWith(color: AppColor.grey)),
+        title: Text("7".tr,
+            style: Theme.of(context)
+                .textTheme
+                .displayLarge!
+                .copyWith(color: AppColor.grey)),
       ),
       body: WillPopScope(
         onWillPop: alertExitApp,
@@ -45,21 +49,27 @@ class Login extends StatelessWidget {
                   return validInput(val!, 5, 100, "email");
                 },
               ),
-              CustomTextFormAuth(
-                hinttext: "6".tr,
-                labeltext: "4".tr,
-                iconData: Icons.lock_outline,
-                mycontroller: controller.password,
-                isPassword: true,
-                valid: (val) {
-                  return validInput(val!, 5, 30, "password");
-                },
+              GetBuilder<LoginControllerImp>(
+                builder: (controller) => CustomTextFormAuth(
+                  hinttext: "6".tr,
+                  labeltext: "4".tr,
+                  iconData: Icons.lock_outline,
+                  mycontroller: controller.password,
+                  isPassword: controller.isShowPassword,
+                  onTapIcon: () {
+                    controller.showPassword();
+                  },
+                  valid: (val) {
+                    return validInput(val!, 5, 30, "password");
+                  },
+                ),
               ),
               InkWell(
                 onTap: () => controller.goToForgetPassword(),
                 child: Text("9".tr, textAlign: TextAlign.end),
               ),
-              CustomButtonAuth(text: "7".tr, onPressed: () => controller.login() ),
+              CustomButtonAuth(
+                  text: "7".tr, onPressed: () => controller.login()),
               const SizedBox(height: 30),
               CustomTextSign(
                 textone: "10".tr,
