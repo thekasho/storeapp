@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:storefull/core/services/services.dart';
-import 'package:storefull/veiw/screen/language.dart';
 import 'binding.dart';
 import 'core/localization/changelocal.dart';
 import 'core/localization/translation.dart';
@@ -30,9 +29,10 @@ class MyApp extends StatelessWidget {
       locale: controller.language,
       theme: controller.appTheme,
       // home: const Language(),
-      home: Language(),
+      // home: Language(),
       initialBinding: MyBinding(),
-      routes: routes,
+      // routes: routes,
+      getPages: routes,
     );
   }
 }
