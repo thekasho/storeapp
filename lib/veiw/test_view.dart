@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:storefull/controller/test_controller.dart';
-import 'package:storefull/core/class/statusrequest.dart';
+
+import '../core/class/handlingdataview.dart';
 
 class TestView extends StatelessWidget {
   const TestView({Key? key}) : super(key: key);
@@ -15,20 +16,15 @@ class TestView extends StatelessWidget {
       ),
       body: GetBuilder<TestController>(
         builder: (controller) {
-          if (controller.statusRequest == StatusRequest.loading) {
-            return const Center(child: Text("loading"));
-          } else if (controller.statusRequest == StatusRequest.offlineFailure) {
-            return const Center(child: Text("Offline Failure"));
-          } else if (controller.statusRequest == StatusRequest.serverFailure) {
-            return const Center(child: Text("Server Failure"));
-          } else {
-            return ListView.builder(
+          return HandlingDataView(
+            statusRequest: controller.statusRequest,
+            widget: ListView.builder(
               itemCount: controller.data.length,
               itemBuilder: (context, index) {
                 return Text("${controller.data}");
               },
-            );
-          }
+            ),
+          );
         },
       ),
     );
