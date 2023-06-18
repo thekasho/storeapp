@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+
 import 'package:storefull/core/constant/routesnames.dart';
+import 'package:storefull/data/datasource/remote/auth/signup.dart';
+import '../../core/class/statusrequest.dart';
+import '../../core/functions/handlingdatacontroller.dart';
 
 abstract class SignUpController extends GetxController {
   goToLogin();
@@ -16,16 +20,42 @@ class SignUpControllerImp extends SignUpController {
   late TextEditingController email;
   late TextEditingController password;
 
+  late StatusRequest statusRequest;
+
+  SignUpData signUpData = SignUpData(Get.find());
+  List data = [];
+
   @override
   goToLogin() {
     Get.offNamed(AppRoute.login);
   }
 
   @override
-  signup() {
+  signup() async {
     var formdata = formstate.currentState;
     if(formdata!.validate()){
-      Get.offNamed(AppRoute.signUpVerifyCode);
+      statusRequest = StatusRequest.loading;
+      var response = await signUpData.postdata(
+        username.text,
+        password.text,
+        email.text,
+        phone.text
+      );
+
+      statusRequest = handlingData(response);
+
+      if(StatusRequest.success == statusRequest){
+        if(response['status'] == "success"){
+          data.addAll(response['data']);
+          Get.offNamed(AppRoute.signUpVerifyCode);
+        } else {
+          Get.defaultDialog(title: "Warning", middleText: "Phone or Email Already Exsist");
+          statusRequest = StatusRequest.failure;
+        }
+      }
+
+      update();
+
       // Get.delete<SignUpControllerImp>();
       print("valid");
     }
