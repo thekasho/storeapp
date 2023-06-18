@@ -15,6 +15,7 @@ class TestController extends GetxController {
   getData() async {
     statusRequest = StatusRequest.loading;
     var response = await testData.getData();
+    print(response);
     statusRequest = handlingData(response);
     if(StatusRequest.success == statusRequest){
       data.addAll(response['data']);
@@ -24,8 +25,8 @@ class TestController extends GetxController {
 
   @override
   void onInit() {
-    getData();
     super.onInit();
+    getData();
   }
 
 }

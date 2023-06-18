@@ -12,14 +12,15 @@ import 'package:storefull/veiw/screen/auth/success_signup.dart';
 import 'package:storefull/veiw/screen/auth/forgetpassword/verifycode.dart';
 import 'package:storefull/veiw/screen/language.dart';
 import 'package:storefull/veiw/screen/onboarding.dart';
+import 'package:storefull/veiw/test_view.dart';
 
 List<GetPage<dynamic>>? routes = [
   // Auth
-  GetPage(name: "/", page: () => const Language(), middlewares: [
-    AppMiddleware(),
-  ]),
+  // GetPage(name: "/", page: () => const Language(), middlewares: [
+  //   AppMiddleware(),
+  // ]),
 
-  // GetPage(name: "/", page: () => const Test()),
+  GetPage(name: "/", page: () => const TestView()),
 
   GetPage(name: AppRoute.login, page: () => const Login()),
   GetPage(name: AppRoute.signup, page: () => const SignUp()),
