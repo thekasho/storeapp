@@ -26,15 +26,12 @@ class SignUpControllerImp extends SignUpController {
   List data = [];
 
   @override
-  goToLogin() {
-    Get.offNamed(AppRoute.login);
-  }
-
-  @override
   signup() async {
     var formdata = formstate.currentState;
     if(formdata!.validate()){
+
       statusRequest = StatusRequest.loading;
+
       var response = await signUpData.postdata(
         username.text,
         password.text,
@@ -46,23 +43,28 @@ class SignUpControllerImp extends SignUpController {
 
       if(StatusRequest.success == statusRequest){
         if(response['status'] == "success"){
-          data.addAll(response['data']);
+          // data.addAll(response['data']);
           Get.offNamed(AppRoute.signUpVerifyCode);
         } else {
           Get.defaultDialog(title: "Warning", middleText: "Phone or Email Already Exsist");
           statusRequest = StatusRequest.failure;
         }
-      }
 
+      }
       update();
 
-      // Get.delete<SignUpControllerImp>();
-      print("valid");
+      print(response);
     }
     else {
       print("invalid input");
     }
   }
+
+  @override
+  goToLogin() {
+    Get.offNamed(AppRoute.login);
+  }
+
 
   @override
   void onInit() {

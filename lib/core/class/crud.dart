@@ -12,7 +12,6 @@ class Crud {
         var response = await http.post(Uri.parse(likurl), body: data);
         if (response.statusCode == 200 || response.statusCode == 201) {
           Map responsebody = jsonDecode(response.body);
-          print(response.body);
           return Right(responsebody);
         } else {
           return const Left(StatusRequest.serverFailure);
@@ -20,8 +19,9 @@ class Crud {
       } else {
         return const Left(StatusRequest.offlineFailure);
       }
-    } on Exception {
-      return const Left(StatusRequest.serverFailure);
+    } catch(e) {
+      print(e);
+      return const Left(StatusRequest.serveException);
     }
   }
 }
