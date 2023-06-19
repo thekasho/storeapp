@@ -20,7 +20,7 @@ class SignUpControllerImp extends SignUpController {
   late TextEditingController email;
   late TextEditingController password;
 
-  late StatusRequest statusRequest;
+  StatusRequest? statusRequest;
 
   SignUpData signUpData = SignUpData(Get.find());
   List data = [];

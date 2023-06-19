@@ -13,7 +13,10 @@ class TestController extends GetxController {
   late StatusRequest statusRequest;
 
   getData() async {
+
     statusRequest = StatusRequest.loading;
+    update();
+
     var response = await testData.getData();
 
     statusRequest = handlingData(response);
