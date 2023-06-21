@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:storefull/core/constant/colors.dart';
-import '../../../../controller/auth/forgetpassword_controller.dart';
+import '../../../../controller/forgetpassword/forgetpassword_controller.dart';
+import '../../../../core/class/statusrequest.dart';
 import '../../../../core/functions/validinput.dart';
 import '../../../widget/auth/custombuttonauth.dart';
 import '../../../widget/auth/customtextbodyauth.dart';
@@ -14,7 +15,7 @@ class ForgetPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ForgetPasswordControllerImp controller = Get.put(ForgetPasswordControllerImp());
+    Get.put(ForgetPasswordControllerImp());
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColor.backgroundcolor,
@@ -26,7 +27,9 @@ class ForgetPassword extends StatelessWidget {
                 .displayLarge!
                 .copyWith(color: AppColor.grey)),
       ),
-      body: Form(
+      body: GetBuilder<ForgetPasswordControllerImp>(builder: (controller) => controller.statusRequest == StatusRequest.loading ?
+      const Center(child: Text("Loading..")) :
+      Form(
         key: controller.formstate,
         child: ListView(
           padding: const EdgeInsets.all(15.0),
@@ -50,7 +53,7 @@ class ForgetPassword extends StatelessWidget {
             }),
           ],
         ),
-      ),
+      ),),
     );
   }
 }

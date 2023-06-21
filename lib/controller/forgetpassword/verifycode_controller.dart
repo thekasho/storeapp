@@ -1,5 +1,8 @@
 import 'package:get/get.dart';
 import 'package:storefull/core/constant/routesnames.dart';
+import 'package:storefull/data/datasource/remote/forgetpassword/verifycode.dart';
+
+import '../../core/class/statusrequest.dart';
 
 abstract class VerifyCodeController extends GetxController {
   goToResetPassword();
@@ -7,7 +10,12 @@ abstract class VerifyCodeController extends GetxController {
 
 class VerifyCodeControllerImp extends VerifyCodeController {
 
+  VerifyCodeResetPasswordData verifyCodeResetPasswordData = VerifyCodeResetPasswordData(Get.find());
+
   late String verifyCode;
+  String? email;
+
+  StatusRequest? statusRequest;
 
   @override
   goToResetPassword() {
@@ -16,6 +24,7 @@ class VerifyCodeControllerImp extends VerifyCodeController {
 
   @override
   void onInit() {
+    email = Get.arguments['email'];
     super.onInit();
   }
 

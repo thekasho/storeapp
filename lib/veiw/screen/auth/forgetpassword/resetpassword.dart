@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:storefull/core/constant/colors.dart';
-import '../../../../controller/auth/resetpassword_controller.dart';
+import '../../../../controller/forgetpassword/resetpassword_controller.dart';
 import '../../../../core/functions/validinput.dart';
 import '../../../widget/auth/custombuttonauth.dart';
 import '../../../widget/auth/customtextbodyauth.dart';

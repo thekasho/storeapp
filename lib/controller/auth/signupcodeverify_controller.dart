@@ -45,13 +45,13 @@ class SignUpVerifyCodeControllerImp extends SignUpVerifyCodeController {
   }
 
   @override
-  void onInit() {
-    email = Get.arguments['email'];
-    super.onInit();
+  checkCode() {
+
   }
 
   @override
-  checkCode() {
-
+  void onInit() {
+    email = Get.arguments['email'];
+    super.onInit();
   }
 }
