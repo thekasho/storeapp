@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:storefull/controller/home_controller.dart';
 
 import '../../core/constant/colors.dart';
 
@@ -7,6 +9,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    HomeControllerImp controller = Get.put(HomeControllerImp());
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColor.backgroundcolor,
@@ -18,9 +21,9 @@ class HomePage extends StatelessWidget {
                 .displayLarge!
                 .copyWith(color: AppColor.grey)),
       ),
-      body: const Center(
+      body: Center(
         child: Text(
-          "Home",
+          "${controller.username} ${controller.id}",
           style: TextStyle(fontSize: 30.0),
         ),
       ),
