@@ -17,7 +17,7 @@ class SignUpVerifyCodeControllerImp extends SignUpVerifyCodeController {
   late String verifyCode;
   String? email;
 
-  StatusRequest? statusRequest;
+  StatusRequest statusRequest = StatusRequest.none;
 
   @override
   goToSuccessSignUp(verifyCode) async {

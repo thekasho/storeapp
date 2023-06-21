@@ -16,7 +16,7 @@ class VerifyCodeControllerImp extends VerifyCodeController {
   late String verifyCode;
   String? email;
 
-  StatusRequest? statusRequest;
+  StatusRequest statusRequest = StatusRequest.none;
 
   @override
   goToResetPassword(verifyCode) async {

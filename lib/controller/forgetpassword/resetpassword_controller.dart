@@ -20,7 +20,7 @@ class ResetPasswordControllerImp extends ResetPasswordController {
   late TextEditingController repassword;
   String? email;
 
-  StatusRequest? statusRequest;
+  StatusRequest statusRequest = StatusRequest.none;
 
   @override
   resetpassword() async {

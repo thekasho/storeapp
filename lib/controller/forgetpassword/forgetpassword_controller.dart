@@ -18,7 +18,7 @@ class ForgetPasswordControllerImp extends ForgetPasswordController {
 
   late TextEditingController email;
 
-  StatusRequest? statusRequest;
+  StatusRequest statusRequest = StatusRequest.none;
 
   @override
   checkemail() async {

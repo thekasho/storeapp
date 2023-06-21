@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:storefull/core/class/statusrequest.dart';
 
 import 'package:storefull/core/constant/colors.dart';
 import '../../../controller/auth/login_controller.dart';
+import '../../../core/class/handlingdataview.dart';
 import '../../../core/functions/alertexitaopp.dart';
 import '../../../core/functions/validinput.dart';
 import '../../widget/auth/custombuttonauth.dart';
@@ -33,54 +33,55 @@ class Login extends StatelessWidget {
       body: WillPopScope(
         onWillPop: alertExitApp,
         child: GetBuilder<LoginControllerImp>(
-          builder: (controller) => controller.statusRequest == StatusRequest.loading ?
-          const Center(child: Text("Loading..")) :
-          Form(
-            key: controller.formstate,
-            child: ListView(
-              padding: const EdgeInsets.all(15.0),
-              children: [
-                const LogoAuth(),
-                CustomTextTitleAuth(text: "2".tr),
-                CustomTextBodyAuth(text: "8".tr),
-                const SizedBox(height: 30),
-                CustomTextFormAuth(
-                  hinttext: "5".tr,
-                  labeltext: "3".tr,
-                  iconData: Icons.email_outlined,
-                  mycontroller: controller.email,
-                  valid: (val) {
-                    return validInput(val!, 5, 100, "email");
-                  },
-                ),
-                GetBuilder<LoginControllerImp>(
-                  builder: (controller) => CustomTextFormAuth(
-                    hinttext: "6".tr,
-                    labeltext: "4".tr,
-                    iconData: Icons.lock_outline,
-                    mycontroller: controller.password,
-                    isPassword: controller.isShowPassword,
-                    onTapIcon: () {
-                      controller.showPassword();
-                    },
+          builder: (controller) => HandlingDataRequest(
+            statusRequest: controller.statusRequest,
+            widget: Form(
+              key: controller.formstate,
+              child: ListView(
+                padding: const EdgeInsets.all(15.0),
+                children: [
+                  const LogoAuth(),
+                  CustomTextTitleAuth(text: "2".tr),
+                  CustomTextBodyAuth(text: "8".tr),
+                  const SizedBox(height: 30),
+                  CustomTextFormAuth(
+                    hinttext: "5".tr,
+                    labeltext: "3".tr,
+                    iconData: Icons.email_outlined,
+                    mycontroller: controller.email,
                     valid: (val) {
-                      return validInput(val!, 5, 30, "password");
+                      return validInput(val!, 5, 100, "email");
                     },
                   ),
-                ),
-                InkWell(
-                  onTap: () => controller.goToForgetPassword(),
-                  child: Text("9".tr, textAlign: TextAlign.end),
-                ),
-                CustomButtonAuth(
-                    text: "7".tr, onPressed: () => controller.login()),
-                const SizedBox(height: 30),
-                CustomTextSign(
-                  textone: "10".tr,
-                  texttwo: " ${"11".tr}",
-                  onTap: () => controller.goToSignUp(),
-                ),
-              ],
+                  GetBuilder<LoginControllerImp>(
+                    builder: (controller) => CustomTextFormAuth(
+                      hinttext: "6".tr,
+                      labeltext: "4".tr,
+                      iconData: Icons.lock_outline,
+                      mycontroller: controller.password,
+                      isPassword: controller.isShowPassword,
+                      onTapIcon: () {
+                        controller.showPassword();
+                      },
+                      valid: (val) {
+                        return validInput(val!, 5, 30, "password");
+                      },
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () => controller.goToForgetPassword(),
+                    child: Text("9".tr, textAlign: TextAlign.end),
+                  ),
+                  CustomButtonAuth(
+                      text: "7".tr, onPressed: () => controller.login()),
+                  const SizedBox(height: 30),
+                  CustomTextSign(
+                    textone: "10".tr,
+                    texttwo: " ${"11".tr}",
+                    onTap: () => controller.goToSignUp(),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

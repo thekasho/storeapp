@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:storefull/core/class/statusrequest.dart';
+import 'package:storefull/core/class/handlingdataview.dart';
 
 import 'package:storefull/core/constant/colors.dart';
 import '../../../../controller/forgetpassword/resetpassword_controller.dart';
@@ -27,42 +27,50 @@ class ResetPassword extends StatelessWidget {
                 .displayLarge!
                 .copyWith(color: AppColor.grey)),
       ),
-      body: GetBuilder<ResetPasswordControllerImp>(builder: (controller) => controller.statusRequest == StatusRequest.loading ?
-      const Center(child: Text("Loading ..")) :
-      Form(
-        key: controller.formstate,
-        child: ListView(
-          padding: const EdgeInsets.all(15.0),
-          children: [
-            CustomTextTitleAuth(text: "23".tr),
-            CustomTextBodyAuth(text: "24".tr,),
-            const SizedBox(height: 30),
-            CustomTextFormAuth(
-              hinttext: "25".tr,
-              labeltext: "26".tr,
-              iconData: Icons.lock_outline,
-              mycontroller: controller.password,
-              isPassword: true,
-              valid: (val) {
-                return validInput(val!, 5, 100, "password");
-              },
+      body: GetBuilder<ResetPasswordControllerImp>(
+        builder: (controller) => HandlingDataRequest(
+          statusRequest: controller.statusRequest,
+          widget: Form(
+            key: controller.formstate,
+            child: ListView(
+              padding: const EdgeInsets.all(15.0),
+              children: [
+                CustomTextTitleAuth(text: "23".tr),
+                CustomTextBodyAuth(
+                  text: "24".tr,
+                ),
+                const SizedBox(height: 30),
+                CustomTextFormAuth(
+                  hinttext: "25".tr,
+                  labeltext: "26".tr,
+                  iconData: Icons.lock_outline,
+                  mycontroller: controller.password,
+                  isPassword: true,
+                  valid: (val) {
+                    return validInput(val!, 5, 100, "password");
+                  },
+                ),
+                CustomTextFormAuth(
+                  hinttext: "27".tr,
+                  labeltext: "27".tr,
+                  iconData: Icons.lock_outline,
+                  mycontroller: controller.repassword,
+                  isPassword: true,
+                  valid: (val) {
+                    return validInput(val!, 5, 100, "password");
+                  },
+                ),
+                CustomButtonAuth(
+                  text: "Update Password",
+                  onPressed: () {
+                    controller.resetpassword();
+                  },
+                ),
+              ],
             ),
-            CustomTextFormAuth(
-              hinttext: "27".tr,
-              labeltext: "27".tr,
-              iconData: Icons.lock_outline,
-              mycontroller: controller.repassword,
-              isPassword: true,
-              valid: (val) {
-                return validInput(val!, 5, 100, "password");
-              },
-            ),
-            CustomButtonAuth(text: "Update Password", onPressed: () {
-              controller.resetpassword();
-            }),
-          ],
+          ),
         ),
-      ),),
+      ),
     );
   }
 }

@@ -21,7 +21,7 @@ class LoginControllerImp extends LoginController {
   late TextEditingController email;
   late TextEditingController password;
 
-  StatusRequest? statusRequest;
+  StatusRequest statusRequest = StatusRequest.none;
 
   bool isShowPassword = true;
 
@@ -48,10 +48,10 @@ class LoginControllerImp extends LoginController {
       if(StatusRequest.success == statusRequest){
         if(response['status'] == "success"){
           Get.offNamed(AppRoute.homePage);
+        } else {
+          Get.defaultDialog(title: "Warning", middleText: "Email or Password Incorrect!!");
+          statusRequest = StatusRequest.failure;
         }
-      } else {
-        Get.defaultDialog(title: "Warning", middleText: "Email or Password Incorrect!!");
-        statusRequest = StatusRequest.failure;
       }
       update();
     }
