@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:storefull/controller/home_controller.dart';
-
+import 'package:storefull/core/constant/colors.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -54,7 +54,45 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-          )
+          ),
+          Container(
+            margin: const EdgeInsetsDirectional.symmetric(
+                horizontal: 15.0, vertical: 15.0),
+            child: Stack(
+              children: [
+                Container(
+                  alignment: Alignment.center,
+                  child: ListTile(
+                    title: Text(
+                      "A summer surprise..",
+                      style: TextStyle(color: Colors.white, fontSize: 20.0),
+                    ),
+                    subtitle: Text(
+                      "Cashback 20%",
+                      style: TextStyle(color: Colors.white, fontSize: 30.0),
+                    ),
+                  ),
+                  height: 150.0,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15.0),
+                    color: AppColor.primaryColor,
+                  ),
+                ),
+                Positioned(
+                  top: -20.0,
+                  right: -20.0,
+                  child: Container(
+                    height: 160,
+                    width: 160.0,
+                    decoration: BoxDecoration(
+                      color: AppColor.secondaryColor,
+                      borderRadius: BorderRadius.circular(160.0),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
