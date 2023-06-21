@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import 'package:storefull/core/constant/colors.dart';
 import '../../../../controller/forgetpassword/verifycode_controller.dart';
+import '../../../../core/class/statusrequest.dart';
 import '../../../widget/auth/customtextbodyauth.dart';
 import '../../../widget/auth/customtexttitleauth.dart';
 
@@ -12,8 +13,7 @@ class VerifyCode extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    VerifyCodeControllerImp controller =
-        Get.put(VerifyCodeControllerImp());
+    Get.put(VerifyCodeControllerImp());
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColor.backgroundcolor,
@@ -25,34 +25,31 @@ class VerifyCode extends StatelessWidget {
                 .displayLarge!
                 .copyWith(color: AppColor.grey)),
       ),
-      body: Container(
-        child: ListView(
-          padding: const EdgeInsets.all(15.0),
-          children: [
-            CustomTextTitleAuth(text: "20".tr),
-            CustomTextBodyAuth(
-              text: "21".tr,
-            ),
-            const SizedBox(height: 30),
-            OtpTextField(
-              fieldWidth: 50.0,
-              borderRadius: BorderRadius.circular(10.0),
-              numberOfFields: 5,
-              borderColor: Color(0xFF512DA8),
-              //set to true to show as box or false to show as dash
-              showFieldAsBox: true,
-              //runs when a code is typed in
-              onCodeChanged: (String code) {
-                //handle validation or checks here
-              },
-              //runs when every textfield is filled
-              onSubmit: (String verificationCode) {
-                controller.goToResetPassword();
-              }, // end onSubmit
-            ),
-          ],
-        ),
-      ),
+      body: GetBuilder<VerifyCodeControllerImp>(builder: (controller) => controller.statusRequest == StatusRequest.loading ?
+      const Center(child: Text('Loading..'),) :
+      ListView(
+        padding: const EdgeInsets.all(15.0),
+        children: [
+          CustomTextTitleAuth(text: "20".tr),
+          CustomTextBodyAuth(
+            text: "21".tr,
+          ),
+          const SizedBox(height: 30),
+          OtpTextField(
+            fieldWidth: 50.0,
+            borderRadius: BorderRadius.circular(10.0),
+            numberOfFields: 5,
+            borderColor: const Color(0xFF512DA8),
+            showFieldAsBox: true,
+            onCodeChanged: (String code) {
+
+            },
+            onSubmit: (String verificationCode) {
+              controller.goToResetPassword(verificationCode);
+            }, // end onSubmit
+          ),
+        ],
+      ),),
     );
   }
 }

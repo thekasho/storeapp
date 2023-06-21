@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:storefull/core/class/statusrequest.dart';
 
 import 'package:storefull/core/constant/colors.dart';
 import '../../../../controller/forgetpassword/resetpassword_controller.dart';
@@ -14,7 +15,7 @@ class ResetPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ResetPasswordControllerImp controller = Get.put(ResetPasswordControllerImp());
+    Get.put(ResetPasswordControllerImp());
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColor.backgroundcolor,
@@ -26,7 +27,9 @@ class ResetPassword extends StatelessWidget {
                 .displayLarge!
                 .copyWith(color: AppColor.grey)),
       ),
-      body: Form(
+      body: GetBuilder<ResetPasswordControllerImp>(builder: (controller) => controller.statusRequest == StatusRequest.loading ?
+      const Center(child: Text("Loading ..")) :
+      Form(
         key: controller.formstate,
         child: ListView(
           padding: const EdgeInsets.all(15.0),
@@ -59,7 +62,7 @@ class ResetPassword extends StatelessWidget {
             }),
           ],
         ),
-      ),
+      ),),
     );
   }
 }
