@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:storefull/core/constant/routesnames.dart';
@@ -13,7 +14,6 @@ abstract class LoginController extends GetxController {
 }
 
 class LoginControllerImp extends LoginController {
-
   LoginData loginData = LoginData(Get.find());
 
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
@@ -25,7 +25,7 @@ class LoginControllerImp extends LoginController {
 
   bool isShowPassword = true;
 
-  showPassword(){
+  showPassword() {
     isShowPassword = isShowPassword == true ? false : true;
     update();
   }
@@ -33,8 +33,7 @@ class LoginControllerImp extends LoginController {
   @override
   login() async {
     var formdata = formstate.currentState;
-    if(formdata!.validate()){
-
+    if (formdata!.validate()) {
       statusRequest = StatusRequest.loading;
       update();
 
@@ -45,11 +44,12 @@ class LoginControllerImp extends LoginController {
 
       statusRequest = handlingData(response);
 
-      if(StatusRequest.success == statusRequest){
-        if(response['status'] == "success"){
+      if (StatusRequest.success == statusRequest) {
+        if (response['status'] == "success") {
           Get.offNamed(AppRoute.homePage);
         } else {
-          Get.defaultDialog(title: "Warning", middleText: "Email or Password Incorrect!!");
+          Get.defaultDialog(
+              title: "Warning", middleText: "Email or Password Incorrect!!");
           statusRequest = StatusRequest.failure;
         }
       }
@@ -69,6 +69,10 @@ class LoginControllerImp extends LoginController {
 
   @override
   void onInit() {
+    FirebaseMessaging.instance.getToken().then((value) {
+      String? token = value;
+      print(token);
+    });
     email = TextEditingController();
     password = TextEditingController();
     super.onInit();
@@ -80,5 +84,4 @@ class LoginControllerImp extends LoginController {
     password.dispose();
     super.dispose();
   }
-
 }
