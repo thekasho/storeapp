@@ -27,10 +27,11 @@ class SignUpControllerImp extends SignUpController {
 
   @override
   signup() async {
-    var formdata = formstate.currentState;
-    if(formdata!.validate()){
+
+    if(formstate.currentState!.validate()){
 
       statusRequest = StatusRequest.loading;
+      update();
 
       var response = await signUpData.postdata(
         username.text,
@@ -44,7 +45,9 @@ class SignUpControllerImp extends SignUpController {
       if(StatusRequest.success == statusRequest){
         if(response['status'] == "success"){
           // data.addAll(response['data']);
-          Get.offNamed(AppRoute.signUpVerifyCode);
+          Get.offNamed(AppRoute.signUpVerifyCode, arguments: {
+            "email": email.text,
+          });
         } else {
           Get.defaultDialog(title: "Warning", middleText: "Phone or Email Already Exsist");
           statusRequest = StatusRequest.failure;
