@@ -6,6 +6,7 @@ class AppLink {
   // AUTH links
   static const String signUp = "$server/auth/signup.php";
   static const String verifyCode = "$server/auth/verfiycode.php";
+  static const String login = "$server/auth/login.php";
 
 
 

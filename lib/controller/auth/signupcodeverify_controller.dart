@@ -37,7 +37,7 @@ class SignUpVerifyCodeControllerImp extends SignUpVerifyCodeController {
         Get.offNamed(AppRoute.successSignUp);
       } else {
         Get.defaultDialog(
-            title: "Warning", middleText: "Phone or Email Already Exsist");
+            title: "Warning", middleText: "Verification Code Incorrect!!");
         statusRequest = StatusRequest.failure;
       }
     }

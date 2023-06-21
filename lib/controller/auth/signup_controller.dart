@@ -52,14 +52,8 @@ class SignUpControllerImp extends SignUpController {
           Get.defaultDialog(title: "Warning", middleText: "Phone or Email Already Exsist");
           statusRequest = StatusRequest.failure;
         }
-
       }
       update();
-
-      print(response);
-    }
-    else {
-      print("invalid input");
     }
   }
 

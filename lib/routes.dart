@@ -10,6 +10,7 @@ import 'package:storefull/veiw/screen/auth/forgetpassword/success_resetpassword.
 import 'package:storefull/veiw/screen/auth/signupcodeverify.dart';
 import 'package:storefull/veiw/screen/auth/success_signup.dart';
 import 'package:storefull/veiw/screen/auth/forgetpassword/verifycode.dart';
+import 'package:storefull/veiw/screen/home.dart';
 import 'package:storefull/veiw/screen/language.dart';
 import 'package:storefull/veiw/screen/onboarding.dart';
 // import 'package:storefull/veiw/test_view.dart';
@@ -22,6 +23,7 @@ List<GetPage<dynamic>>? routes = [
 
   // GetPage(name: "/", page: () => const TestView()),
 
+  // Auth Pages
   GetPage(name: AppRoute.login, page: () => const Login()),
   GetPage(name: AppRoute.signup, page: () => const SignUp()),
   GetPage(name: AppRoute.forgetPassword, page: () => const ForgetPassword()),
@@ -31,6 +33,9 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoute.successSignUp, page: () => const SuccessSignUp()),
   GetPage(name: AppRoute.signUpVerifyCode, page: () => const SignUpVerifyCode()),
 
-  // OnBoarding
+  // Home Pages
+  GetPage(name: AppRoute.homePage, page: () => const HomePage()),
+
+  // OnBoarding Pages
   GetPage(name: AppRoute.onboarding, page: () => const OnBoarding()),
 ];

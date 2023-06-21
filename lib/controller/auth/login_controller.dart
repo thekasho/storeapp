@@ -2,6 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:storefull/core/constant/routesnames.dart';
 
+import '../../core/class/statusrequest.dart';
+import '../../core/functions/handlingdatacontroller.dart';
+import '../../data/datasource/remote/auth/login.dart';
+
 abstract class LoginController extends GetxController {
   login();
   goToSignUp();
@@ -10,10 +14,14 @@ abstract class LoginController extends GetxController {
 
 class LoginControllerImp extends LoginController {
 
+  LoginData loginData = LoginData(Get.find());
+
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
 
   late TextEditingController email;
   late TextEditingController password;
+
+  StatusRequest? statusRequest;
 
   bool isShowPassword = true;
 
@@ -23,13 +31,29 @@ class LoginControllerImp extends LoginController {
   }
 
   @override
-  login() {
+  login() async {
     var formdata = formstate.currentState;
     if(formdata!.validate()){
-      print("valid");
-    }
-    else {
-      print("invalid input");
+
+      statusRequest = StatusRequest.loading;
+      update();
+
+      var response = await loginData.postdata(
+          password.text,
+          email.text,
+      );
+
+      statusRequest = handlingData(response);
+
+      if(StatusRequest.success == statusRequest){
+        if(response['status'] == "success"){
+          Get.offNamed(AppRoute.homePage);
+        }
+      } else {
+        Get.defaultDialog(title: "Warning", middleText: "Email or Password Incorrect!!");
+        statusRequest = StatusRequest.failure;
+      }
+      update();
     }
   }
 
