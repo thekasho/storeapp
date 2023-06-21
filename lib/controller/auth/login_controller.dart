@@ -39,8 +39,8 @@ class LoginControllerImp extends LoginController {
       update();
 
       var response = await loginData.postdata(
-          password.text,
-          email.text,
+        email.text,
+        password.text,
       );
 
       statusRequest = handlingData(response);
