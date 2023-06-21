@@ -13,6 +13,7 @@ class SignUpVerifyCode extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(SignUpVerifyCodeControllerImp());
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColor.backgroundcolor,
@@ -24,37 +25,33 @@ class SignUpVerifyCode extends StatelessWidget {
                 .displayLarge!
                 .copyWith(color: AppColor.grey)),
       ),
-      body: GetBuilder<SignUpVerifyCodeControllerImp>(
-        builder: (controller) =>
-            controller.statusRequest == StatusRequest.loading
-                ? Center(child: Text("Loading.."))
-                : ListView(
-                    padding: const EdgeInsets.all(15.0),
-                    children: [
-                      CustomTextTitleAuth(text: "20".tr),
-                      CustomTextBodyAuth(
-                        text: "21".tr,
-                      ),
-                      const SizedBox(height: 30),
-                      OtpTextField(
-                        fieldWidth: 50.0,
-                        borderRadius: BorderRadius.circular(10.0),
-                        numberOfFields: 5,
-                        borderColor: const Color(0xFF512DA8),
-                        //set to true to show as box or false to show as dash
-                        showFieldAsBox: true,
-                        //runs when a code is typed in
-                        onCodeChanged: (String code) {
-                          //handle validation or checks here
-                        },
-                        //runs when every textfield is filled
-                        onSubmit: (String verificationCode) {
-                          controller.goToSuccessSignUp();
-                        }, // end onSubmit
-                      ),
-                    ],
-                  ),
-      ),
+      body: GetBuilder<SignUpVerifyCodeControllerImp>(builder: (controller) => controller.statusRequest == StatusRequest.loading ?
+      const Center(child: Text('Loading..'),)
+          : Container(
+        child: ListView(
+          padding: const EdgeInsets.all(15.0),
+          children: [
+            CustomTextTitleAuth(text: "20".tr),
+            CustomTextBodyAuth(
+              text: "21".tr,
+            ),
+            const SizedBox(height: 30),
+            OtpTextField(
+              fieldWidth: 50.0,
+              borderRadius: BorderRadius.circular(10.0),
+              numberOfFields: 5,
+              borderColor: const Color(0xFF512DA8),
+              showFieldAsBox: true,
+              onCodeChanged: (String code) {
+
+              },
+              onSubmit: (String verificationCode) {
+                controller.goToSuccessSignUp(verificationCode);
+              }, // end onSubmit
+            ),
+          ],
+        ),
+      ),)
     );
   }
 }

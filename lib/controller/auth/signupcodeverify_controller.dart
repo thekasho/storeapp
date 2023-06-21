@@ -6,10 +6,12 @@ import '../../core/functions/handlingdatacontroller.dart';
 import '../../data/datasource/remote/auth/verifycodesignup.dart';
 
 abstract class SignUpVerifyCodeController extends GetxController {
-  goToSuccessSignUp();
+  checkCode();
+  goToSuccessSignUp(String verifyCode);
 }
 
 class SignUpVerifyCodeControllerImp extends SignUpVerifyCodeController {
+
   VerifyCodeSignUpData verifyCodeSignUpData = VerifyCodeSignUpData(Get.find());
 
   late String verifyCode;
@@ -18,7 +20,8 @@ class SignUpVerifyCodeControllerImp extends SignUpVerifyCodeController {
   StatusRequest? statusRequest;
 
   @override
-  goToSuccessSignUp() async {
+  goToSuccessSignUp(verifyCode) async {
+
     statusRequest = StatusRequest.loading;
     update();
 
@@ -31,7 +34,6 @@ class SignUpVerifyCodeControllerImp extends SignUpVerifyCodeController {
 
     if (StatusRequest.success == statusRequest) {
       if (response['status'] == "success") {
-        // data.addAll(response['data']);
         Get.offNamed(AppRoute.successSignUp);
       } else {
         Get.defaultDialog(
@@ -40,13 +42,16 @@ class SignUpVerifyCodeControllerImp extends SignUpVerifyCodeController {
       }
     }
     update();
-
-    print(response);
   }
 
   @override
   void onInit() {
     email = Get.arguments['email'];
     super.onInit();
+  }
+
+  @override
+  checkCode() {
+
   }
 }
