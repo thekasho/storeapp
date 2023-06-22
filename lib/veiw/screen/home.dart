@@ -100,31 +100,83 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                 ),
-                Container(
-                  height: 70.0,
+                SizedBox(
+                  height: 100.0,
                   child: ListView.separated(
                     separatorBuilder: (context, index) =>
                         const SizedBox(width: 10.0),
                     itemCount: controller.categories.length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
-                      return Container(
-                        decoration: BoxDecoration(
-                          color: AppColor.thirdColor,
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
-                        padding: const EdgeInsetsDirectional.symmetric(
-                            horizontal: 10.0),
-                        height: 70.0,
-                        width: 70.0,
-                        child: SvgPicture.network(
-                          "${AppLink.categories_images}/${controller.categories[index]['category_image']}",
-                          color: AppColor.secondaryColor,
-                        ),
+                      return Column(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              color: AppColor.thirdColor,
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            padding: const EdgeInsetsDirectional.symmetric(
+                                horizontal: 10.0),
+                            height: 70.0,
+                            width: 70.0,
+                            child: SvgPicture.network(
+                              "${AppLink.categories_images}/${controller.categories[index]['category_image']}",
+                              color: AppColor.secondaryColor,
+                            ),
+                          ),
+                          const SizedBox(height: 5.0),
+                          Text(
+                            "${controller.categories[index]['category_name']}",
+                            style: const TextStyle(fontSize: 13.0),
+                          ),
+                        ],
                       );
                     },
                   ),
-                )
+                ),
+                const SizedBox(height: 10.0),
+                const Text(
+                  "Product For You.",
+                  style: TextStyle(
+                      fontSize: 20.0,
+                      color: AppColor.primaryColor,
+                      fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10.0),
+                SizedBox(
+                  height: 200.0,
+                  child: ListView.builder(
+                    itemCount: 3,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, i) => Stack(
+                      children: [
+                        Container(
+                          padding: const EdgeInsetsDirectional.symmetric(
+                              horizontal: 20.0, vertical: 10.0),
+                          margin: const EdgeInsetsDirectional.symmetric(
+                              horizontal: 10.0),
+                          child: Image.asset("assets/images/2.png",
+                              height: 100.0, width: 150.0, fit: BoxFit.fill),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20.0),
+                            color: AppColor.black.withOpacity(0.3),
+                          ),
+                          height: 120.0,
+                          width: 200.0,
+                        ),
+                        Positioned(
+                          left: 10.0,
+                          child: Text(
+                            "Labtop Surface Go 2",
+                            style: TextStyle(color: Colors.white, fontSize: 17.0),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
