@@ -17,6 +17,7 @@ class HomeControllerImp extends HomeController {
   HomeData homeData = HomeData(Get.find());
 
   List categories = [];
+  List items = [];
 
   String? username;
   String? id;
@@ -43,6 +44,7 @@ class HomeControllerImp extends HomeController {
     if(StatusRequest.success == statusRequest){
       if(response['status'] == "success"){
         categories.addAll(response['categories']);
+        items.addAll(response['items']);
       } else {
         statusRequest = StatusRequest.failure;
       }

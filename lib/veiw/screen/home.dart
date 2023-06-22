@@ -146,7 +146,7 @@ class HomePage extends StatelessWidget {
                 SizedBox(
                   height: 200.0,
                   child: ListView.builder(
-                    itemCount: 3,
+                    itemCount: controller.items.length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, i) => Stack(
                       children: [
@@ -155,7 +155,7 @@ class HomePage extends StatelessWidget {
                               horizontal: 20.0, vertical: 10.0),
                           margin: const EdgeInsetsDirectional.symmetric(
                               horizontal: 10.0),
-                          child: Image.asset("assets/images/2.png",
+                          child: Image.network("${AppLink.items_images}/${controller.items[i]['item_image']}",
                               height: 100.0, width: 150.0, fit: BoxFit.fill),
                         ),
                         Container(
@@ -169,8 +169,8 @@ class HomePage extends StatelessWidget {
                         Positioned(
                           left: 10.0,
                           child: Text(
-                            "Labtop Surface Go 2",
-                            style: TextStyle(color: Colors.white, fontSize: 17.0),
+                            "${controller.items[i]['item_name']}",
+                            style: const TextStyle(color: Colors.white, fontSize: 17.0),
                           ),
                         ),
                       ],
