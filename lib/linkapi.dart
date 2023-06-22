@@ -1,6 +1,12 @@
 class AppLink {
 
   static const String server = "http://153.92.210.119/str";
+
+  // Images Links
+  static const String images_link = "http://153.92.210.119/str/upload";
+  static const String categories_images = "$images_link/categories/svg";
+  static const String items_images = "$images_link/items";
+
   static const String test = "$server/test.php";
 
   // AUTH links
