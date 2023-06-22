@@ -7,9 +7,9 @@ import 'package:storefull/data/model/categories_model.dart';
 import '../../../core/constant/colors.dart';
 import '../../../linkapi.dart';
 
-class HomeCategoryList extends GetView<HomeControllerImp> {
+class productCategoryList extends GetView<HomeControllerImp> {
 
-  const HomeCategoryList({
+  const productCategoryList({
     super.key,
   });
 
@@ -42,7 +42,7 @@ class Categories extends GetView<HomeControllerImp> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
-        controller.goToProducts(controller.categories, i);
+        // controller.goToProducts(controller.categories, i);
       },
       child: Column(
         children: [

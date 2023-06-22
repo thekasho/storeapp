@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:storefull/controller/home_controller.dart';
 import 'package:storefull/core/class/handlingdataview.dart';
 
-import '../widget/home/customappbar.dart';
+import '../widget/customappbar.dart';
 import '../widget/home/customhomecard.dart';
 import '../widget/home/homecategorylist.dart';
 import '../widget/home/homecustomtitle.dart';

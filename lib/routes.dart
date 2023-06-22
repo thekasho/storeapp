@@ -11,18 +11,15 @@ import 'package:storefull/veiw/screen/auth/signupcodeverify.dart';
 import 'package:storefull/veiw/screen/auth/success_signup.dart';
 import 'package:storefull/veiw/screen/auth/forgetpassword/verifycode.dart';
 import 'package:storefull/veiw/screen/homescreen.dart';
+import 'package:storefull/veiw/screen/products.dart';
 import 'package:storefull/veiw/screen/language.dart';
 import 'package:storefull/veiw/screen/onboarding.dart';
-// import 'package:storefull/veiw/test_view.dart';
 
 List<GetPage<dynamic>>? routes = [
   // Auth
   GetPage(name: "/", page: () => const Language(), middlewares: [
     AppMiddleware(),
   ]),
-
-  // GetPage(name: "/", page: () => const TestView()),
-
   // Auth Pages
   GetPage(name: AppRoute.login, page: () => const Login()),
   GetPage(name: AppRoute.signup, page: () => const SignUp()),
@@ -35,6 +32,7 @@ List<GetPage<dynamic>>? routes = [
 
   // Home Pages
   GetPage(name: AppRoute.homePage, page: () => const HomeScreen()),
+  GetPage(name: AppRoute.products, page: () => const Products()),
 
   // OnBoarding Pages
   GetPage(name: AppRoute.onboarding, page: () => const OnBoarding()),

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:storefull/core/constant/routesnames.dart';
 import 'package:storefull/core/services/services.dart';
 import 'package:storefull/data/datasource/remote/homedata.dart';
 
@@ -8,6 +9,7 @@ import '../core/functions/handlingdatacontroller.dart';
 abstract class HomeController extends GetxController {
   initialData();
   getData();
+  goToProducts(List categories, int selectedCat);
 }
 
 class HomeControllerImp extends HomeController {
@@ -58,5 +60,13 @@ class HomeControllerImp extends HomeController {
     initialData();
     getData();
     super.onInit();
+  }
+
+  @override
+  goToProducts(categories, selectedCat) {
+    Get.toNamed(AppRoute.products, arguments: {
+      "categories": categories,
+      "selectedcat": selectedCat,
+    });
   }
 }
