@@ -15,27 +15,35 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(HomeControllerImp());
-    return Scaffold(
-      body: GetBuilder<HomeControllerImp>(
-        builder: (controller) => HandlingDataView(
-          statusRequest: controller.statusRequest,
-          widget: Container(
-            padding: const EdgeInsetsDirectional.symmetric(horizontal: 15.0),
-            child: ListView(
-              children: [
-                CustomAppBar(
-                  titleAppBar: "Find Product..",
-                  onPressedNotify: () {},
-                  onPressedSearch: () {},
-                ),
-                const CustomHomeCard(cardtitle: "A summer surprise..", cardbody: "Cashback 20%",),
-                const HomeCategoryList(),
-                const SizedBox(height: 10.0),
-                const HomeCustomTitle(title: "Product For You.",),
-                const SizedBox(height: 10.0),
-                const HomeItemsList(),
-              ],
-            ),
+    return GetBuilder<HomeControllerImp>(
+      builder: (controller) => HandlingDataView(
+        statusRequest: controller.statusRequest,
+        widget: Container(
+          padding: const EdgeInsetsDirectional.symmetric(horizontal: 15.0),
+          child: ListView(
+            children: [
+              CustomAppBar(
+                titleAppBar: "Find Product..",
+                onPressedNotify: () {},
+                onPressedSearch: () {},
+              ),
+              const CustomHomeCard(
+                cardtitle: "A summer surprise..",
+                cardbody: "Cashback 20%",
+              ),
+              const HomeCustomTitle(
+                title: "Categories",
+              ),
+              const HomeCategoryList(),
+              const HomeCustomTitle(
+                title: "Product For You.",
+              ),
+              const HomeItemsList(),
+              const HomeCustomTitle(
+                title: "Offers..",
+              ),
+              const HomeItemsList(),
+            ],
           ),
         ),
       ),

@@ -15,7 +15,8 @@ class HomeCategoryList extends GetView<HomeControllerImp> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      margin: const EdgeInsets.only(bottom: 15.0),
       height: 100.0,
       child: ListView.separated(
         separatorBuilder: (context, index) =>

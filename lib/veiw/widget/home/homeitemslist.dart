@@ -15,7 +15,7 @@ class HomeItemsList extends GetView<HomeControllerImp> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200.0,
+      height: 140.0,
       child: ListView.builder(
         itemCount: controller.items.length,
         scrollDirection: Axis.horizontal,
