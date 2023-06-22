@@ -19,6 +19,13 @@ class HomeScreenComtrollerImp extends HomeScreenComtroller {
     Column(mainAxisAlignment: MainAxisAlignment.center, children: [Center(child: Text("Favourite"),)],),
   ];
 
+  List pagesTitles = [
+    "Home",
+    "Settings",
+    "Profile",
+    "Favourite",
+  ];
+
   @override
   changePage(int i) {
     currentPage = i;
