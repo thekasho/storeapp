@@ -7,10 +7,10 @@ class CategoriesModel {
 
   CategoriesModel(
       {this.categoryId,
-        this.categoryName,
-        this.categoryNameAr,
-        this.categoryImage,
-        this.categoryDatetime});
+      this.categoryName,
+      this.categoryNameAr,
+      this.categoryImage,
+      this.categoryDatetime});
 
   CategoriesModel.fromJson(Map<String, dynamic> json) {
     categoryId = json['category_id'];
@@ -21,12 +21,12 @@ class CategoriesModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['category_id'] = this.categoryId;
-    data['category_name'] = this.categoryName;
-    data['category_name_ar'] = this.categoryNameAr;
-    data['category_image'] = this.categoryImage;
-    data['category_datetime'] = this.categoryDatetime;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['category_id'] = categoryId;
+    data['category_name'] = categoryName;
+    data['category_name_ar'] = categoryNameAr;
+    data['category_image'] = categoryImage;
+    data['category_datetime'] = categoryDatetime;
     return data;
   }
 }
