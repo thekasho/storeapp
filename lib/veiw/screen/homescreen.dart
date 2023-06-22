@@ -26,53 +26,25 @@ class HomeScreen extends StatelessWidget {
               Row(
                 children: [
                   CustomAppBarButton(
-                    onPressed: () {
-                      controller.changePage(0);
-                    },
-                    buttonTitle: 'Home',
-                    buttonIcon: Icons.home,
-                    selectedButtonIconColor: AppColor.black, selectedTitleIconColor: AppColor.black,
+                    onPressed: () => controller.changePage(0), buttonTitle: 'Home', buttonIcon: Icons.home,
+                    active: controller.currentPage == 0 ? true : false,
                   ),
-                  MaterialButton(
-                    onPressed: () {
-                      controller.changePage(1);
-                    },
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(Icons.home),
-                        Text("Settings"),
-                      ],
-                    ),
+                  CustomAppBarButton(
+                    onPressed: () => controller.changePage(1), buttonTitle: 'Settings', buttonIcon: Icons.settings,
+                    active: controller.currentPage == 1 ? true : false,
                   ),
                 ],
               ),
               Spacer(),
               Row(
                 children: [
-                  MaterialButton(
-                    onPressed: () {
-                      controller.changePage(2);
-                    },
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(Icons.home),
-                        Text("Profile"),
-                      ],
-                    ),
+                  CustomAppBarButton(
+                    onPressed: () => controller.changePage(2), buttonTitle: 'Profile', buttonIcon: Icons.account_circle_outlined,
+                    active: controller.currentPage == 2 ? true : false,
                   ),
-                  MaterialButton(
-                    onPressed: () {
-                      controller.changePage(3);
-                    },
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(Icons.home),
-                        Text("Favourite"),
-                      ],
-                    ),
+                  CustomAppBarButton(
+                    onPressed: () => controller.changePage(3), buttonTitle: 'Favourite', buttonIcon: Icons.favorite,
+                    active: controller.currentPage == 3 ? true : false,
                   ),
                 ],
               ),
