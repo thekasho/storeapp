@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:storefull/controller/home_controller.dart';
+
+import 'package:storefull/controller/products_controller.dart';
+import 'package:storefull/core/constant/colors.dart';
 import 'package:storefull/data/model/categories_model.dart';
 
-import '../../../core/constant/colors.dart';
-import '../../../linkapi.dart';
+class ProductCategoryList extends GetView<ProductsControllerImp> {
 
-class productCategoryList extends GetView<HomeControllerImp> {
-
-  const productCategoryList({
+  const ProductCategoryList({
     super.key,
   });
 
@@ -31,7 +29,7 @@ class productCategoryList extends GetView<HomeControllerImp> {
   }
 }
 
-class Categories extends GetView<HomeControllerImp> {
+class Categories extends GetView<ProductsControllerImp> {
 
   final CategoriesModel categoriesModel;
   final int i;
@@ -43,27 +41,19 @@ class Categories extends GetView<HomeControllerImp> {
     return InkWell(
       onTap: (){
         // controller.goToProducts(controller.categories, i);
+        controller.changeCat(i);
       },
       child: Column(
         children: [
           Container(
-            decoration: BoxDecoration(
-              color: AppColor.thirdColor,
-              borderRadius: BorderRadius.circular(20.0),
+            padding: const EdgeInsets.only(bottom: 3.0, left: 10.0, right: 10.0),
+            decoration: controller.selectedCat == i ?
+            const BoxDecoration(border: Border(bottom: BorderSide(width: 2.0, color: AppColor.primaryColor))) :
+            null,
+            child: Text(
+              "${categoriesModel.categoryName}",
+              style: const TextStyle(fontSize: 20.0, color: AppColor.darkGrey),
             ),
-            padding: const EdgeInsetsDirectional.symmetric(
-                horizontal: 10.0),
-            height: 70.0,
-            width: 70.0,
-            child: SvgPicture.network(
-              "${AppLink.categories_images}/${categoriesModel.categoryImage}",
-              color: AppColor.secondaryColor,
-            ),
-          ),
-          const SizedBox(height: 5.0),
-          Text(
-            "${categoriesModel.categoryName}",
-            style: const TextStyle(fontSize: 13.0),
           ),
         ],
       ),

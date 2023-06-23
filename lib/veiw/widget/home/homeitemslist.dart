@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:storefull/data/model/items_model.dart';
@@ -40,11 +41,10 @@ class Items extends StatelessWidget {
               horizontal: 20.0, vertical: 10.0),
           margin: const EdgeInsetsDirectional.symmetric(
               horizontal: 10.0),
-          child: Image.network(
-              "${AppLink.items_images}/${itemsModel.itemImage}",
+          child: CachedNetworkImage(
               height: 100.0,
               width: 150.0,
-              fit: BoxFit.fill),
+              fit: BoxFit.fill, imageUrl: "${AppLink.items_images}/${itemsModel.itemImage}",),
         ),
         Container(
           decoration: BoxDecoration(
