@@ -13,6 +13,12 @@ class ProductDetailsControllerImp extends ProductDetailsController {
     itemsModel = Get.arguments['itemmodel'];
   }
 
+  List productColorsList =[
+    {"name": "Red", "id": 1, "active": 0},
+    {"name": "Black", "id": 2, "active": 1},
+    {"name": "Blue", "id": 3, "active": 0},
+  ];
+
   @override
   void onInit() {
     initData();
