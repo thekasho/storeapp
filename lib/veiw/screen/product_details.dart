@@ -7,6 +7,8 @@ import 'package:storefull/core/constant/colors.dart';
 import 'package:storefull/core/functions/remote_translate.dart';
 import 'package:storefull/linkapi.dart';
 
+import '../widget/product_details/priceandqty.dart';
+
 class ProductDetailsScreen extends StatelessWidget {
   const ProductDetailsScreen({Key? key}) : super(key: key);
 
@@ -68,6 +70,8 @@ class ProductDetailsScreen extends StatelessWidget {
                         .textTheme
                         .displayMedium!
                         .copyWith(color: AppColor.black)),
+                const SizedBox(height: 10.0),
+                PriceAndQty(onAdd: () {}, onRemove: () {}, count: '2', price: '20.0'),
                 const SizedBox(height: 10.0),
                 Text(
                     "${networkTranslate(controller.itemsModel.itemDescAr, controller.itemsModel.itemDesc)} "
