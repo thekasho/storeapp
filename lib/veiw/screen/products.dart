@@ -13,7 +13,9 @@ class Products extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     Get.put(ProductsControllerImp());
+
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.all(15.0),
@@ -27,7 +29,7 @@ class Products extends StatelessWidget {
                   onPressedNotify: () {},
                   onPressedSearch: () {},
                 ),
-                ProductCategoryList(),
+                const ProductCategoryList(),
                 GridView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),

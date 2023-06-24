@@ -22,7 +22,9 @@ class ProductCategoryList extends GetView<ProductsControllerImp> {
         itemCount: controller.categories.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          return Categories(i: index, categoriesModel: CategoriesModel.fromJson(controller.categories[index]));
+          return Categories(i: index,
+              categoriesModel: CategoriesModel.fromJson(
+                  controller.categories[index]));
         },
       ),
     );
@@ -34,27 +36,35 @@ class Categories extends GetView<ProductsControllerImp> {
   final CategoriesModel categoriesModel;
   final int i;
 
-  const Categories({Key? key, required this.categoriesModel, required this.i}) : super(key: key);
+  const Categories({Key? key, required this.categoriesModel, required this.i})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
+      onTap: () {
         // controller.goToProducts(controller.categories, i);
-        controller.changeCat(i);
+        controller.changeCat(i, categoriesModel.categoryId!);
       },
       child: Column(
         children: [
-          Container(
-            padding: const EdgeInsets.only(bottom: 3.0, left: 10.0, right: 10.0),
-            decoration: controller.selectedCat == i ?
-            const BoxDecoration(border: Border(bottom: BorderSide(width: 2.0, color: AppColor.primaryColor))) :
-            null,
-            child: Text(
-              "${categoriesModel.categoryName}",
-              style: const TextStyle(fontSize: 20.0, color: AppColor.darkGrey),
-            ),
-          ),
+          GetBuilder<ProductsControllerImp>(builder: (logic) {
+            return Container(
+              padding: const EdgeInsets.only(
+                  bottom: 3.0, left: 10.0, right: 10.0),
+              decoration: controller.selectedCat == i
+                  ?
+              const BoxDecoration(border: Border(
+                  bottom: BorderSide(width: 2.0, color: AppColor.primaryColor)))
+                  :
+              null,
+              child: Text(
+                "${categoriesModel.categoryName}",
+                style: const TextStyle(
+                    fontSize: 20.0, color: AppColor.darkGrey),
+              ),
+            );
+          }),
         ],
       ),
     );
