@@ -9,6 +9,6 @@ class AppColor {
   static const Color primaryColor = Color(0xfff2786d);
   static const Color secondaryColor = Color(0xffc0392b);
   static const Color thirdColor = Color.fromARGB(255, 255, 179, 170);
-
+  static const Color darkBlue = Color(0xFF0A3559);
 
 }
