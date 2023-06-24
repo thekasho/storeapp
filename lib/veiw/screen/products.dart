@@ -13,24 +13,24 @@ class Products extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     Get.put(ProductsControllerImp());
 
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.all(15.0),
-        child: GetBuilder<ProductsControllerImp>(
-          builder: (controller) => HandlingDataView(
-            statusRequest: controller.statusRequest,
-            widget: ListView(
-              children: [
-                CustomAppBar(
-                  titleAppBar: "Find Product..",
-                  onPressedNotify: () {},
-                  onPressedSearch: () {},
-                ),
-                const ProductCategoryList(),
-                GridView.builder(
+        child: ListView(
+          children: [
+            CustomAppBar(
+              titleAppBar: "Find Product..",
+              onPressedNotify: () {},
+              onPressedSearch: () {},
+            ),
+            const SizedBox(height: 15.0),
+            const ProductCategoryList(),
+            GetBuilder<ProductsControllerImp>(
+              builder: (controller) => HandlingDataView(
+                statusRequest: controller.statusRequest,
+                widget: GridView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: controller.products.length,
@@ -44,9 +44,9 @@ class Products extends StatelessWidget {
                     );
                   },
                 ),
-              ],
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );

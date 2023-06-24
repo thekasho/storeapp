@@ -15,7 +15,7 @@ class ProductCategoryList extends GetView<ProductsControllerImp> {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(bottom: 15.0),
-      height: 100.0,
+      height: 50.0,
       child: ListView.separated(
         separatorBuilder: (context, index) =>
         const SizedBox(width: 10.0),
