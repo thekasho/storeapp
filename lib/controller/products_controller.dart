@@ -1,13 +1,16 @@
 import 'package:get/get.dart';
 import 'package:storefull/data/datasource/remote/productsdata.dart';
+import 'package:storefull/data/model/items_model.dart';
 
 import '../core/class/statusrequest.dart';
+import '../core/constant/routesnames.dart';
 import '../core/functions/handlingdatacontroller.dart';
 
 abstract class ProductsController extends GetxController {
   initialData();
   changeCat(int val, String catval);
   getAllProducts(String catid);
+  goToProductDetailPage(ItemsModel itemsModel);
 }
 
 class ProductsControllerImp extends ProductsController {
@@ -63,6 +66,11 @@ class ProductsControllerImp extends ProductsController {
       }
     }
     update();
+  }
+
+  @override
+  goToProductDetailPage(itemsModel) {
+    Get.toNamed(AppRoute.productDetails, arguments: {"itemmodel": itemsModel});
   }
 
 }

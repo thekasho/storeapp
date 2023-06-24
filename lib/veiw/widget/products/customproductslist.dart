@@ -1,12 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:storefull/controller/products_controller.dart';
 import 'package:storefull/core/functions/remote_translate.dart';
 import 'package:storefull/data/model/items_model.dart';
 
 import '../../../core/constant/colors.dart';
 import '../../../linkapi.dart';
 
-class CustomProductsList extends StatelessWidget {
+class CustomProductsList extends GetView<ProductsControllerImp> {
   final ItemsModel itemsModel;
 
   const CustomProductsList({
@@ -17,6 +19,7 @@ class CustomProductsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      onTap: () => controller.goToProductDetailPage(itemsModel),
       child: Card(
         child: Padding(
           padding: const EdgeInsets.all(10.0),
@@ -24,10 +27,13 @@ class CustomProductsList extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              CachedNetworkImage(
-                imageUrl: "${AppLink.items_images}/${itemsModel.itemImage}",
-                height: 120.0,
-                fit: BoxFit.fill,
+              Hero(
+                tag: "${itemsModel.itemId}",
+                child: CachedNetworkImage(
+                  imageUrl: "${AppLink.items_images}/${itemsModel.itemImage}",
+                  height: 120.0,
+                  fit: BoxFit.fill,
+                ),
               ),
               Text(
                 "${networkTranslate(itemsModel.itemNameAr, itemsModel.itemName)}",
@@ -41,11 +47,20 @@ class CustomProductsList extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text("Rating 3.5", textAlign: TextAlign.center,),
+                  Text(
+                    "Rating 3.5",
+                    textAlign: TextAlign.center,
+                  ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      ...List.generate(5, (index) => Icon(Icons.star, size: 15.0, color: AppColor.primaryColor,)),
+                      ...List.generate(
+                          5,
+                          (index) => Icon(
+                                Icons.star,
+                                size: 15.0,
+                                color: AppColor.primaryColor,
+                              )),
                     ],
                   ),
                 ],
