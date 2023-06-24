@@ -9,7 +9,7 @@ import '../core/functions/handlingdatacontroller.dart';
 abstract class HomeController extends GetxController {
   initialData();
   getData();
-  goToProducts(List categories, int selectedCat);
+  goToProducts(List categories, int selectedCat, String catid);
 }
 
 class HomeControllerImp extends HomeController {
@@ -63,10 +63,11 @@ class HomeControllerImp extends HomeController {
   }
 
   @override
-  goToProducts(categories, selectedCat) {
+  goToProducts(categories, selectedCat, catid) {
     Get.toNamed(AppRoute.products, arguments: {
       "categories": categories,
       "selectedcat": selectedCat,
+      "catid": catid,
     });
   }
 }

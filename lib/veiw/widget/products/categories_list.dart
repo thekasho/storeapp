@@ -22,7 +22,7 @@ class ProductCategoryList extends GetView<ProductsControllerImp> {
         itemCount: controller.categories.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          return Categories(i: index,categoriesModel: CategoriesModel.fromJson(controller.categories[index]),);
+          return Categories(i: index, categoriesModel: CategoriesModel.fromJson(controller.categories[index]));
         },
       ),
     );

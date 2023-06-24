@@ -22,4 +22,7 @@ class AppLink {
   // Home Api
   static const String homePage = "$server/home.php";
 
+  // Products
+  static const String products = "$server/products/products.php";
+
 }
