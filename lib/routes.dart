@@ -17,6 +17,7 @@ import 'package:storefull/veiw/screen/onboarding.dart';
 
 List<GetPage<dynamic>>? routes = [
   // Auth
+  // GetPage(name: "/", page: () => const Language() ),
   GetPage(name: "/", page: () => const Language(), middlewares: [
     AppMiddleware(),
   ]),

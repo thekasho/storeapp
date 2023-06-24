@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:storefull/controller/home_controller.dart';
 
 import '../../../core/constant/colors.dart';
 
-class CustomHomeCard extends StatelessWidget {
+class CustomHomeCard extends GetView<HomeControllerImp> {
 
   final String cardtitle;
   final String cardbody;
@@ -39,7 +41,8 @@ class CustomHomeCard extends StatelessWidget {
           ),
           Positioned(
             top: -20.0,
-            right: -20.0,
+            right: controller.lang == "en" ? -20.0 : null,
+            left: controller.lang == "ar" ? -20.0 : null,
             child: Container(
               height: 160,
               width: 160.0,

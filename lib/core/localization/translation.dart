@@ -32,6 +32,12 @@ class MyTranslation extends Translations {
       "25": "كلمة المرور",
       "26": "كلمة المرور الجديدة",
       "27": "تأكيد كلمة المرور",
+      "28": "التصنيفات",
+      "29": "منتجات مختارة لك",
+      "30": "العروض",
+      "31": "ابحث عن منتج..",
+      "32": "هدايا الصيف ..",
+      "33": "كاش باك 20%",
     },
     "en": {
       "1": "Choose Language",
@@ -61,6 +67,12 @@ class MyTranslation extends Translations {
       "25": "Enter Your Password",
       "26": "New Password",
       "27": "Repeat Your Password",
+      "28": "Categories",
+      "29": "Products For You",
+      "30": "Offers",
+      "31": "Find Product..",
+      "32": "A summer surprise..",
+      "33": "Cashback 20%",
     },
   };
 

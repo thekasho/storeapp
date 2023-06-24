@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:storefull/core/functions/remote_translate.dart';
 import 'package:storefull/data/model/items_model.dart';
 
 import '../../../core/constant/colors.dart';
@@ -29,7 +30,7 @@ class CustomProductsList extends StatelessWidget {
                 fit: BoxFit.fill,
               ),
               Text(
-                "${itemsModel.itemName}",
+                "${networkTranslate(itemsModel.itemNameAr, itemsModel.itemName)}",
                 style: const TextStyle(
                   color: AppColor.black,
                   fontSize: 16.0,

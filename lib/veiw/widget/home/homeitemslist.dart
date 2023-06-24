@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:storefull/core/functions/remote_translate.dart';
 import 'package:storefull/data/model/items_model.dart';
 
 import '../../../controller/home_controller.dart';
@@ -57,7 +58,7 @@ class Items extends StatelessWidget {
         Positioned(
           left: 10.0,
           child: Text(
-            "${itemsModel.itemName}",
+            "${networkTranslate(itemsModel.itemNameAr, itemsModel.itemName)}",
             style: const TextStyle(
                 color: Colors.white, fontSize: 17.0),
           ),

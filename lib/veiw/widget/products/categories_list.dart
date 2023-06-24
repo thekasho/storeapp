@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import 'package:storefull/controller/products_controller.dart';
 import 'package:storefull/core/constant/colors.dart';
+import 'package:storefull/core/functions/remote_translate.dart';
 import 'package:storefull/data/model/categories_model.dart';
 
 class ProductCategoryList extends GetView<ProductsControllerImp> {
@@ -59,7 +60,7 @@ class Categories extends GetView<ProductsControllerImp> {
                   :
               null,
               child: Text(
-                "${categoriesModel.categoryName}",
+                "${networkTranslate(categoriesModel.categoryNameAr, categoriesModel.categoryName)}",
                 style: const TextStyle(
                     fontSize: 20.0, color: AppColor.darkGrey),
               ),

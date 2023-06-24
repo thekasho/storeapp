@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:storefull/controller/home_controller.dart';
+import 'package:storefull/core/functions/remote_translate.dart';
 import 'package:storefull/data/model/categories_model.dart';
 
 import '../../../core/constant/colors.dart';
@@ -62,7 +63,7 @@ class Categories extends GetView<HomeControllerImp> {
           ),
           const SizedBox(height: 5.0),
           Text(
-            "${categoriesModel.categoryName}",
+            "${networkTranslate(categoriesModel.categoryNameAr, categoriesModel.categoryName)}",
             style: const TextStyle(fontSize: 13.0),
           ),
         ],
